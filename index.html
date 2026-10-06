@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guia digital de apoio ao encontro 'Além dos Rótulos': reflexões sobre dignidade humana, respeito e convivência fraterna."
+    />
+    <meta name="theme-color" content="#2b2118" />
+    <title>Além dos Rótulos: Guia Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f8f3e8;
+        --paper-2: #f1e9d8;
+        --ink: #2b2118;
+        --ink-soft: #5a4e42;
+        --amber: #b8752e;
+        --amber-deep: #8f5a20;
+        --forest: #2f5d50;
+        --forest-soft: #dce7e1;
+        --tone-1: #f4d9b8;
+        --tone-2: #e3b989;
+        --tone-3: #c68a5e;
+        --tone-4: #9c6240;
+        --tone-5: #6b3f28;
+        --tone-6: #3e271a;
+        --card: #fffdf8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Manrope", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+      }
+      .wrap {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 0 20px 96px;
+      }
+
+      #progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: var(--amber);
+        width: 0%;
+        z-index: 50;
+      }
+      .tonebar {
+        height: 12px;
+        width: 100%;
+        display: flex;
+      }
+      .tonebar span {
+        flex: 1;
+        height: 100%;
+      }
+      .tonebar span:nth-child(1) {
+        background: var(--tone-1);
+      }
+      .tonebar span:nth-child(2) {
+        background: var(--tone-2);
+      }
+      .tonebar span:nth-child(3) {
+        background: var(--tone-3);
+      }
+      .tonebar span:nth-child(4) {
+        background: var(--tone-4);
+      }
+      .tonebar span:nth-child(5) {
+        background: var(--tone-5);
+      }
+      .tonebar span:nth-child(6) {
+        background: var(--tone-6);
+      }
+
+      .hero {
+        padding: 44px 20px 32px;
+        text-align: center;
+      }
+      .eyebrow {
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        font-size: 11.5px;
+        color: var(--amber-deep);
+        margin-bottom: 12px;
+      }
+      .sticker-strike {
+        position: relative;
+        display: inline-block;
+        font-family: "Fraunces", serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--ink-soft);
+        background: var(--tone-1);
+        padding: 5px 14px;
+        border-radius: 6px;
+        transform: rotate(-2deg);
+        margin-bottom: 16px;
+      }
+      .sticker-strike::after {
+        content: "";
+        position: absolute;
+        left: 6%;
+        right: 6%;
+        top: 50%;
+        height: 2px;
+        background: var(--ink);
+        transform: rotate(1deg);
+      }
+      h1 {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 1.05;
+        margin: 0 0 6px;
+      }
+      h1 em {
+        font-style: italic;
+        color: var(--amber-deep);
+      }
+      .hero p.sub {
+        font-size: 16px;
+        color: var(--ink-soft);
+        max-width: 360px;
+        margin: 14px auto 0;
+      }
+
+      .bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 60;
+        background: rgba(248, 243, 232, 0.94);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-top: 1px solid var(--paper-2);
+        box-shadow: 0 -8px 20px rgba(43, 33, 24, 0.07);
+      }
+      .bottom-nav-inner {
+        max-width: 520px;
+        margin: 0 auto;
+        display: flex;
+        gap: 3px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+      }
+      .bottom-nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+      .bottom-nav a {
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        text-decoration: none;
+        color: var(--ink-soft);
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.1;
+        padding: 6px 11px 5px;
+        border-radius: 13px;
+        min-width: 56px;
+      }
+      .bottom-nav a .ic {
+        font-size: 18px;
+        line-height: 1;
+      }
+      .bottom-nav a.active {
+        color: var(--forest);
+        background: var(--forest-soft);
+      }
+
+      .illo {
+        width: 100%;
+        border-radius: 16px;
+        background: var(--card);
+        border: 1px solid var(--paper-2);
+        margin-bottom: 18px;
+        overflow: hidden;
+      }
+      .illo svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      section {
+        margin-top: 48px;
+      }
+      .tag {
+        display: inline-block;
+        font-family: "Fraunces", serif;
+        font-weight: 600;
+        font-size: 12.5px;
+        letter-spacing: 0.03em;
+        color: var(--card);
+        background: var(--ink);
+        padding: 6px 13px 7px;
+        border-radius: 5px 5px 5px 0;
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .tag::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 6px;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 7px solid var(--ink);
+      }
+      h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 26px;
+        margin: 0 0 12px;
+        line-height: 1.15;
+      }
+      p {
+        margin: 0 0 13px;
+        color: var(--ink);
+        font-size: 15.5px;
+      }
+      .lead {
+        color: var(--ink-soft);
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 18px 20px;
+        margin-top: 12px;
+        border: 1px solid var(--paper-2);
+      }
+      .card h3 {
+        font-family: "Fraunces", serif;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 7px;
+        color: var(--amber-deep);
+      }
+      .card p:last-child {
+        margin-bottom: 0;
+      }
+
+      ul.tips {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+      }
+      ul.tips li {
+        display: flex;
+        gap: 11px;
+        padding: 11px 0;
+        border-top: 1px solid var(--paper-2);
+        font-size: 15px;
+      }
+      ul.tips li:first-child {
+        border-top: none;
+      }
+      ul.tips li .dot {
+        flex-shrink: 0;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--amber);
+        margin-top: 7px;
+      }
+
+      .rec-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .rec {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 13px 16px;
+        border: 1px solid var(--paper-2);
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .rec .kind {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--forest);
+        background: var(--forest-soft);
+        padding: 4px 7px;
+        border-radius: 6px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .rec .title {
+        font-weight: 700;
+        font-size: 14.5px;
+      }
+      .rec .desc {
+        color: var(--ink-soft);
+        font-size: 13.5px;
+        margin-top: 2px;
+      }
+
+      /* rolagem única com efeito de revelação */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+        will-change: opacity, transform;
+      }
+      .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      .bottom-nav a {
+        transition: background 0.25s ease, color 0.25s ease;
+      }
+
+      ul.tips li {
+        cursor: pointer;
+        transition: opacity 0.25s ease;
+        border-radius: 8px;
+      }
+      ul.tips li:active {
+        opacity: 0.7;
+      }
+      ul.tips li .dot {
+        transition: background 0.25s ease, transform 0.25s ease;
+      }
+      ul.tips li.checked .dot {
+        background: var(--forest);
+        transform: scale(1.3);
+      }
+      ul.tips li.checked strong {
+        color: var(--forest);
+      }
+      .hint {
+        display: block;
+        font-size: 11px;
+        color: var(--ink-soft);
+        margin-top: 10px;
+        text-align: right;
+      }
+
+      .rec {
+        cursor: pointer;
+        position: relative;
+        transition: border-color 0.25s ease, background 0.25s ease;
+      }
+      .rec.favorito {
+        border-color: var(--amber);
+        background: var(--tone-1);
+      }
+      .rec .fav-mark {
+        margin-left: auto;
+        flex-shrink: 0;
+        font-size: 18px;
+        color: var(--paper-2);
+        transition: color 0.25s ease, transform 0.25s ease;
+        align-self: center;
+      }
+      .rec.favorito .fav-mark {
+        color: var(--amber);
+        transform: scale(1.25);
+      }
+
+      .closing {
+        margin-top: 56px;
+        text-align: center;
+        padding: 32px 22px 40px;
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 22px;
+      }
+      .closing .tag {
+        background: var(--amber);
+        color: var(--ink);
+      }
+      .closing .tag::before {
+        border-right-color: var(--amber);
+      }
+      .closing p {
+        color: #e8dfcf;
+        font-size: 15.5px;
+      }
+      .closing .quote {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 18px;
+        line-height: 1.4;
+        color: var(--paper);
+        margin-top: 8px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 36px;
+        font-size: 12px;
+        color: var(--ink-soft);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress" role="presentation" aria-hidden="true"></div>
+    <div class="tonebar" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span
+      ><span></span>
+    </div>
+
+    <header class="hero">
+      <p class="eyebrow">Laboratório da Juventude</p>
+      <p class="sticker-strike">rótulo</p>
+      <h1>Além dos<br /><em>Rótulos</em></h1>
+      <p class="sub">
+        Somos todos humanos, criados com a mesma dignidade. Este guia é a
+        continuação do que vivemos hoje, pra levar pra casa e reler com calma.
+      </p>
+    </header>
+
+    <main class="wrap">
+      <div class="illo">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="120" r="58" fill="#F4D9B8" />
+          <circle cx="230" cy="95" r="66" fill="#C68A5E" />
+          <circle cx="320" cy="130" r="52" fill="#6B3F28" />
+          <circle cx="380" cy="80" r="34" fill="#E3B989" />
+          <circle cx="100" cy="70" r="30" fill="#9C6240" />
+          <g
+            fill="none"
+            stroke="#2B2118"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          >
+            <rect
+              x="196"
+              y="34"
+              width="52"
+              height="30"
+              rx="4"
+              transform="rotate(-8 222 49)"
+              fill="#F8F3E8"
+            />
+            <line
+              x1="196"
+              y1="49"
+              x2="248"
+              y2="49"
+              transform="rotate(-8 222 49)"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <section id="rotulos">
+        <span class="tag">01 · conceito</span>
+        <h2>O que é um rótulo?</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="150"
+              y="50"
+              width="180"
+              height="110"
+              rx="10"
+              fill="#F1E9D8"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <path d="M330 50 L370 50 L330 90 Z" fill="#B8752E" />
+            <circle cx="180" cy="80" r="6" fill="#8F5A20" />
+            <line
+              x1="170"
+              y1="120"
+              x2="280"
+              y2="120"
+              stroke="#8F5A20"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <line
+              x1="170"
+              y1="138"
+              x2="250"
+              y2="138"
+              stroke="#8F5A20"
+              stroke-width="4"
+              stroke-linecap="round"
+              opacity=".6"
+            />
+          </svg>
+        </div>
+        <p>
+          Um rótulo é uma etiqueta que colocamos em alguém antes de conhecê-lo
+          de verdade. Ele reduz uma pessoa inteira, com sua história, seus
+          sonhos, suas dores, a uma única palavra: rico, pobre, nerd, favelado,
+          diferente.
+        </p>
+        <p class="lead">
+          Hoje você usou um rótulo por algumas horas. Imagine carregar um assim,
+          todos os dias, a vida toda, como muita gente carrega, mesmo sem
+          escolher.
+        </p>
+        <div class="card">
+          <h3>Estereótipo × Preconceito × Discriminação</h3>
+          <p>
+            <strong>Estereótipo</strong> é a ideia generalizada sobre um grupo.
+            <strong>Preconceito</strong> é julgar alguém com base nessa ideia,
+            antes de conhecê-lo. <strong>Discriminação</strong> é quando esse
+            julgamento vira ação: negar um emprego, uma vaga, um lugar, um
+            respeito.
+          </p>
+        </div>
+      </section>
+
+      <section id="racismo">
+        <span class="tag">02 · racismo e preconceito</span>
+        <h2>Racismo estrutural</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2B2118" stroke-width="2.5">
+              <rect
+                x="70"
+                y="60"
+                width="70"
+                height="100"
+                rx="4"
+                fill="#F4D9B8"
+              />
+              <rect
+                x="170"
+                y="60"
+                width="70"
+                height="100"
+                rx="4"
+                fill="#F1E9D8"
+              />
+              <rect
+                x="270"
+                y="60"
+                width="70"
+                height="100"
+                rx="4"
+                fill="#C68A5E"
+              />
+              <rect
+                x="370"
+                y="60"
+                width="70"
+                height="100"
+                rx="4"
+                fill="#F1E9D8"
+              />
+            </g>
+            <circle cx="105" cy="45" r="4" fill="#6B3F28" />
+            <circle cx="205" cy="45" r="4" fill="#6B3F28" />
+            <circle cx="305" cy="45" r="4" fill="#6B3F28" />
+            <circle cx="405" cy="45" r="4" fill="#6B3F28" />
+            <rect x="185" y="90" width="8" height="40" fill="#2B2118" />
+            <rect x="385" y="90" width="8" height="40" fill="#2B2118" />
+          </svg>
+        </div>
+        <p>
+          Racismo não é só um xingamento ou uma piada de mau gosto. É um
+          sistema: um conjunto de práticas, hábitos e estruturas que,
+          historicamente, colocaram pessoas negras em desvantagem no acesso à
+          educação, ao trabalho, à moradia, à segurança.
+        </p>
+        <p>
+          Isso explica por que o racismo pode existir mesmo sem uma pessoa "má"
+          no meio: ele está nas portas que se abrem mais fácil pra uns do que
+          pra outros, mesmo quando ninguém percebe isso acontecendo.
+        </p>
+        <div class="card">
+          <h3>Uma frase pra guardar</h3>
+          <p>
+            Não basta não ser racista. É preciso ser <em>antirracista</em>:
+            perceber essas estruturas e agir para mudá-las, em vez de apenas
+            evitar praticá-las.
+          </p>
+        </div>
+      </section>
+
+      <section id="socio">
+        <span class="tag">03 · diversidade socioeconômica</span>
+        <h2>Privilégio não é culpa, é ponto de partida</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <line
+              x1="40"
+              y1="170"
+              x2="440"
+              y2="170"
+              stroke="#2B2118"
+              stroke-width="2"
+            />
+            <line
+              x1="440"
+              y1="60"
+              x2="440"
+              y2="170"
+              stroke-dasharray="4 5"
+              stroke="#8F5A20"
+              stroke-width="2"
+            />
+            <circle cx="90" cy="150" r="14" fill="#6B3F28" />
+            <circle cx="200" cy="115" r="14" fill="#C68A5E" />
+            <circle cx="330" cy="80" r="14" fill="#E3B989" />
+            <line
+              x1="90"
+              y1="164"
+              x2="90"
+              y2="170"
+              stroke="#2B2118"
+              stroke-width="2"
+            />
+            <line
+              x1="200"
+              y1="129"
+              x2="200"
+              y2="170"
+              stroke="#2B2118"
+              stroke-width="2"
+            />
+            <line
+              x1="330"
+              y1="94"
+              x2="330"
+              y2="170"
+              stroke="#2B2118"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <p>
+          Nem todo mundo começa a corrida no mesmo lugar. Onde você nasceu, a
+          renda da sua família, o bairro em que cresceu: tudo isso abre ou fecha
+          portas antes mesmo de você fazer qualquer escolha.
+        </p>
+        <p class="lead">
+          Reconhecer um privilégio não é motivo de vergonha: é o primeiro passo
+          pra usá-lo com responsabilidade, em vez de fingir que ele não existe.
+        </p>
+        <ul class="tips">
+          <li>
+            <span class="dot"></span
+            ><span
+              >Antes de julgar a trajetória de alguém, pergunte: eu conheço o
+              ponto de partida dessa pessoa?</span
+            >
+          </li>
+          <li>
+            <span class="dot"></span
+            ><span
+              >Oportunidade não é a mesma coisa que mérito: às vezes é só sorte
+              de nascimento.</span
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section id="capacitismo">
+        <span class="tag">04 · capacitismo</span>
+        <h2>PCD também é rótulo e barreira</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="150"
+              cy="80"
+              r="22"
+              fill="#E3B989"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <path
+              d="M150 105 V150 M150 120 H185 M150 150 L130 185 M150 150 L175 185"
+              stroke="#2B2118"
+              stroke-width="6"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <circle
+              cx="175"
+              cy="170"
+              r="26"
+              fill="none"
+              stroke="#2B2118"
+              stroke-width="6"
+            />
+            <g fill="none" stroke="#2B2118" stroke-width="2.5">
+              <rect
+                x="290"
+                y="60"
+                width="120"
+                height="120"
+                rx="12"
+                fill="#F1E9D8"
+              />
+              <path d="M330 180 V150 H370 V180" fill="#F8F3E8" />
+            </g>
+            <line
+              x1="290"
+              y1="180"
+              x2="410"
+              y2="180"
+              stroke="#2B2118"
+              stroke-width="4"
+            />
+            <path
+              d="M300 178 L410 178"
+              stroke="#B8752E"
+              stroke-width="10"
+              stroke-linecap="round"
+            />
+            <path
+              d="M300 178 L360 130"
+              stroke="#B8752E"
+              stroke-width="10"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <p>
+          Pessoas com deficiência enfrentam um mercado de trabalho pensado, na
+          maioria das vezes, sem elas: prédios sem rampa, processos seletivos
+          sem acessibilidade, colegas que duvidam da capacidade antes mesmo de
+          conhecer o currículo.
+        </p>
+        <p>
+          No Brasil, a Lei de Cotas (Lei 8.213/91) obriga empresas com 100 ou
+          mais funcionários a reservar entre 2% e 5% das vagas para pessoas com
+          deficiência, dependendo do tamanho da empresa. É uma conquista
+          importante, mas boa parte dessas vagas ainda não é preenchida, muitas
+          vezes por falta de acessibilidade real, não por falta de gente
+          capacitada.
+        </p>
+        <div class="card">
+          <h3>Rótulo comum: "coitadinho" ou "super-herói"</h3>
+          <p>
+            Duas armadilhas do capacitismo: tratar a pessoa com deficiência como
+            incapaz, ou como "inspiração" só por existir. As duas formas apagam
+            a mesma coisa: a pessoa como ela é, com talentos e limites reais,
+            como qualquer outra.
+          </p>
+        </div>
+      </section>
+
+      <section id="maternidade">
+        <span class="tag">05 · maternidade e trabalho</span>
+        <h2>Mulher grávida também sofre rótulo</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="150"
+              cy="70"
+              r="22"
+              fill="#C68A5E"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <path
+              d="M120 180 C120 130 130 110 150 108 C178 108 195 130 190 165 C188 178 180 185 165 186"
+              fill="#F4D9B8"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <circle cx="165" cy="150" r="8" fill="#8F5A20" />
+            <g fill="none" stroke="#2B2118" stroke-width="2.5">
+              <rect
+                x="290"
+                y="90"
+                width="130"
+                height="80"
+                rx="10"
+                fill="#F1E9D8"
+              />
+            </g>
+            <line
+              x1="320"
+              y1="120"
+              x2="390"
+              y2="120"
+              stroke="#8F5A20"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <line
+              x1="320"
+              y1="138"
+              x2="360"
+              y2="138"
+              stroke="#8F5A20"
+              stroke-width="4"
+              stroke-linecap="round"
+              opacity=".5"
+            />
+            <path
+              d="M400 95 L415 80"
+              stroke="#B8752E"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <path d="M415 80 L423 72 L428 77 L420 85 Z" fill="#B8752E" />
+          </svg>
+        </div>
+        <p>
+          Mesmo protegida por lei, a gestante ainda enfrenta rótulos silenciosos
+          no trabalho: é vista como "menos comprometida", perde oportunidades de
+          promoção, ou sente que sua gravidez virou motivo de deboche ou de
+          afastamento informal das decisões importantes.
+        </p>
+        <p>
+          A CLT garante estabilidade no emprego desde a confirmação da gravidez
+          até cinco meses após o parto: a empresa não pode demitir sem justa
+          causa nesse período. Mas a lei protege o emprego; não protege sozinha
+          contra o julgamento e o isolamento no dia a dia.
+        </p>
+        <div class="card">
+          <h3>Rótulo comum: "ela vai sumir"</h3>
+          <p>
+            Antecipar que uma mulher vai se tornar "menos produtiva" só por
+            estar grávida é um julgamento antes da história acontecer,
+            exatamente o tipo de rótulo que este laboratório propõe derrubar.
+          </p>
+        </div>
+      </section>
+
+      <section id="direitos">
+        <span class="tag">06 · direitos humanos</span>
+        <h2>Uma dignidade que ninguém dá e ninguém pode tirar</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M240 40 L300 60 V110 C300 150 270 175 240 185 C210 175 180 150 180 110 V60 Z"
+              fill="#F1E9D8"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <path
+              d="M240 90 V150 M212 120 H268"
+              stroke="#B8752E"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+            <circle cx="120" cy="120" r="12" fill="#F4D9B8" />
+            <circle cx="360" cy="120" r="12" fill="#6B3F28" />
+            <circle cx="90" cy="80" r="10" fill="#E3B989" />
+            <circle cx="390" cy="80" r="10" fill="#9C6240" />
+          </svg>
+        </div>
+        <p>
+          A Declaração Universal dos Direitos Humanos (1948) começa afirmando
+          que toda pessoa nasce livre e com a mesma dignidade que qualquer
+          outra, independentemente de origem, cor, crença ou condição social.
+        </p>
+        <p>
+          Isso significa que a dignidade de uma pessoa não é algo conquistado
+          por mérito, riqueza ou aparência: ela é o ponto de partida, válida
+          antes de qualquer rótulo.
+        </p>
+      </section>
+
+      <section id="convivencia">
+        <span class="tag">07 · na prática</span>
+        <h2>Dicas de convivência respeitosa</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="60"
+              y="60"
+              width="150"
+              height="80"
+              rx="18"
+              fill="#F1E9D8"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <path
+              d="M100 140 L90 165 L125 140 Z"
+              fill="#F1E9D8"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <rect
+              x="270"
+              y="90"
+              width="150"
+              height="80"
+              rx="18"
+              fill="#C68A5E"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <path
+              d="M400 170 L410 195 L375 170 Z"
+              fill="#C68A5E"
+              stroke="#2B2118"
+              stroke-width="2.5"
+            />
+            <line
+              x1="90"
+              y1="90"
+              x2="180"
+              y2="90"
+              stroke="#8F5A20"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <line
+              x1="90"
+              y1="108"
+              x2="150"
+              y2="108"
+              stroke="#8F5A20"
+              stroke-width="4"
+              stroke-linecap="round"
+              opacity=".6"
+            />
+            <line
+              x1="300"
+              y1="120"
+              x2="390"
+              y2="120"
+              stroke="#2B2118"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <line
+              x1="300"
+              y1="138"
+              x2="360"
+              y2="138"
+              stroke="#2B2118"
+              stroke-width="4"
+              stroke-linecap="round"
+              opacity=".6"
+            />
+          </svg>
+        </div>
+        <ul class="tips">
+          <li>
+            <span class="dot"></span
+            ><span
+              ><strong>Escute antes de concluir.</strong> Pergunte pela história
+              antes de supor que já sabe qual é.</span
+            >
+          </li>
+          <li>
+            <span class="dot"></span
+            ><span
+              ><strong>Corrija com gentileza.</strong> Se um amigo fizer uma
+              piada com rótulo, é possível apontar sem humilhar.</span
+            >
+          </li>
+          <li>
+            <span class="dot"></span
+            ><span
+              ><strong>Note quem não está falando.</strong> Às vezes o silêncio
+              de alguém no grupo é sinal de que ela se sente de fora.</span
+            >
+          </li>
+          <li>
+            <span class="dot"></span
+            ><span
+              ><strong>Peça desculpas sem drama.</strong> Errar ao falar sobre
+              diferença acontece; o que importa é ouvir e ajustar.</span
+            >
+          </li>
+          <li>
+            <span class="dot"></span
+            ><span
+              ><strong>Aja, não só concorde.</strong> Concordar que preconceito
+              é errado é fácil; o difícil é mudar uma atitude no dia a
+              dia.</span
+            >
+          </li>
+        </ul>
+        <span class="hint">toque numa dica pra marcar como praticada</span>
+      </section>
+
+      <section id="indicacoes">
+        <span class="tag">08 · pra ir além</span>
+        <h2>Filmes, livros e podcasts</h2>
+        <div class="illo">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2B2118" stroke-width="2.5" fill="none">
+              <rect
+                x="60"
+                y="45"
+                width="70"
+                height="55"
+                rx="6"
+                fill="#F4D9B8"
+              />
+              <path
+                d="M60 55 L75 45 M75 55 L90 45 M90 55 L105 45 M105 55 L120 45"
+                stroke-width="2"
+              />
+              <rect
+                x="205"
+                y="40"
+                width="70"
+                height="70"
+                rx="4"
+                fill="#F1E9D8"
+              />
+              <line x1="240" y1="40" x2="240" y2="110" />
+              <line x1="215" y1="55" x2="235" y2="55" stroke-width="2" />
+              <line x1="215" y1="68" x2="235" y2="68" stroke-width="2" />
+              <circle cx="380" cy="70" r="34" fill="#C68A5E" />
+              <circle cx="365" cy="70" r="9" fill="#F8F3E8" />
+              <circle cx="395" cy="70" r="9" fill="#F8F3E8" />
+              <path d="M365 70 Q380 40 395 70" stroke-width="3" />
+            </g>
+          </svg>
+        </div>
+        <div class="rec-grid">
+          <div class="rec">
+            <span class="kind">Filme</span>
+            <div>
+              <div class="title">Estrelas Além do Tempo</div>
+              <div class="desc">
+                A trajetória de três cientistas negras na NASA dos anos 1960,
+                driblando racismo e machismo.
+              </div>
+            </div>
+            <span class="fav-mark" aria-hidden="true">★</span>
+          </div>
+          <div class="rec">
+            <span class="kind">Filme</span>
+            <div>
+              <div class="title">Que Horas Ela Volta?</div>
+              <div class="desc">
+                Drama brasileiro sobre classe social, trabalho doméstico e os
+                limites invisíveis entre "patrão" e "empregada".
+              </div>
+            </div>
+            <span class="fav-mark" aria-hidden="true">★</span>
+          </div>
+          <div class="rec">
+            <span class="kind">Livro</span>
+            <div>
+              <div class="title">Torto Arado, de Itamar Vieira Junior</div>
+              <div class="desc">
+                Romance sobre duas irmãs negras no interior da Bahia, memória,
+                terra e desigualdade.
+              </div>
+            </div>
+            <span class="fav-mark" aria-hidden="true">★</span>
+          </div>
+          <div class="rec">
+            <span class="kind">Livro</span>
+            <div>
+              <div class="title">
+                Pequeno Manual Antirracista, de Djamila Ribeiro
+              </div>
+              <div class="desc">
+                Introdução acessível aos conceitos de racismo estrutural e
+                antirracismo cotidiano.
+              </div>
+            </div>
+            <span class="fav-mark" aria-hidden="true">★</span>
+          </div>
+        </div>
+        <span class="hint">toque num título pra guardar como favorito</span>
+      </section>
+
+      <div class="closing">
+        <span class="tag">mensagem final</span>
+        <svg aria-hidden="true" focusable="false"
+          viewBox="0 0 200 100"
+          style="
+            width: 120px;
+            height: auto;
+            margin: 0 auto 14px;
+            display: block;
+          "
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M60 45 H140 V85 H60 Z"
+            fill="none"
+            stroke="#F8F3E8"
+            stroke-width="2.5"
+          />
+          <path
+            d="M60 45 L100 25 L140 45"
+            fill="none"
+            stroke="#F8F3E8"
+            stroke-width="2.5"
+          />
+          <rect
+            x="82"
+            y="15"
+            width="26"
+            height="16"
+            rx="3"
+            fill="#B8752E"
+            transform="rotate(12 95 23)"
+          />
+        </svg>
+        <p class="quote">
+          "Quando retiramos os rótulos, enxergamos pessoas. E quando enxergamos
+          pessoas, nasce o respeito. Porque, acima de qualquer diferença, somos
+          todos humanos."
+        </p>
+        <p style="margin-top: 16px">
+          Obrigado por ter vindo hoje. Que a doçura do respeito continue depois
+          que este rótulo já estiver na caixa.
+        </p>
+      </div>
+
+      <footer>
+        Laboratório da Juventude 
+        <br />
+        Produzido pelos jovens aprendizes da turma 2026.07.640 do curso de
+        Qualificação em Serviços Administrativos, SENAC Centro.
+        <br />
+        Orientação: professora Marciana.
+      </footer>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação rápida do guia">
+      <div class="bottom-nav-inner">
+        <a href="#rotulos"><span class="ic">🏷️</span>Rótulos</a>
+        <a href="#racismo"><span class="ic">✊🏾</span>Racismo</a>
+        <a href="#socio"><span class="ic">⚖️</span>Privilégio</a>
+        <a href="#capacitismo"><span class="ic">♿</span>PCD</a>
+        <a href="#maternidade"><span class="ic">🤰</span>Maternidade</a>
+        <a href="#direitos"><span class="ic">📜</span>Direitos</a>
+        <a href="#convivencia"><span class="ic">🤝</span>Convivência</a>
+        <a href="#indicacoes"><span class="ic">🎬</span>Indicações</a>
+      </div>
+    </nav>
+
+    <script>
+      (function () {
+        // barra de progresso da leitura
+        const progressBar = document.getElementById("progress");
+        let ticking = false;
+
+        function updateProgress() {
+          const scrollable =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+          progressBar.style.width = percent + "%";
+          ticking = false;
+        }
+
+        window.addEventListener(
+          "scroll",
+          function () {
+            if (!ticking) {
+              window.requestAnimationFrame(updateProgress);
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+
+        // efeito de revelação suave ao rolar (rolagem única, sem trocar de página)
+        const revealTargets = document.querySelectorAll(
+          "main.wrap > .illo, section, .closing"
+        );
+        revealTargets.forEach(function (el) {
+          el.classList.add("reveal");
+        });
+
+        if ("IntersectionObserver" in window) {
+          const revealObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("in-view");
+                  revealObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+          );
+          revealTargets.forEach(function (el) {
+            revealObserver.observe(el);
+          });
+        } else {
+          revealTargets.forEach(function (el) {
+            el.classList.add("in-view");
+          });
+        }
+
+        // menu que acompanha a seção em foco (scrollspy)
+        const navLinks = Array.from(document.querySelectorAll(".bottom-nav a"));
+        const sections = navLinks
+          .map(function (link) {
+            return document.getElementById(link.getAttribute("href").slice(1));
+          })
+          .filter(Boolean);
+
+        if ("IntersectionObserver" in window && sections.length) {
+          const spyObserver = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                const link = navLinks.find(
+                  function (a) {
+                    return a.getAttribute("href") === "#" + entry.target.id;
+                  }
+                );
+                if (!link) return;
+                if (entry.isIntersecting) {
+                  navLinks.forEach(function (a) {
+                    a.classList.remove("active");
+                  });
+                  link.classList.add("active");
+                  link.scrollIntoView({
+                    behavior: "smooth",
+                    inline: "center",
+                    block: "nearest",
+                  });
+                }
+              });
+            },
+            { rootMargin: "-45% 0px -50% 0px" }
+          );
+          sections.forEach(function (sec) {
+            spyObserver.observe(sec);
+          });
+        }
+
+        // dicas de convivência viram um pequeno checklist ao toque
+        document.querySelectorAll("ul.tips li").forEach(function (li) {
+          li.addEventListener("click", function () {
+            li.classList.toggle("checked");
+          });
+        });
+
+        // indicações podem ser marcadas como favoritas
+        document.querySelectorAll(".rec").forEach(function (rec) {
+          rec.addEventListener("click", function () {
+            rec.classList.toggle("favorito");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
